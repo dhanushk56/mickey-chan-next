@@ -15,7 +15,7 @@ export default function Home() {
         <h1 className="font-orbitron text-4xl md:text-6xl font-bold mb-6">
           Welcome to <span className="gradient-text">Mickey Chan</span>
         </h1>
-        <p className="text-white/60 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+        <p className="text-black/60 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
           Content creator, entertainer, and storyteller. Watch the latest videos, explore
           open positions, and join the community.
         </p>
@@ -40,12 +40,12 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {latest.map((v) => (
             <div key={v.slug} className="glass-card rounded-xl overflow-hidden feature-card">
-              <div className="h-40 flex items-center justify-center text-xs text-white/30 bg-black/40">
+              <div className="h-40 flex items-center justify-center text-xs text-black/30 bg-black/40">
                 [VIDEO THUMBNAIL]
               </div>
               <div className="p-5">
                 <div className="font-semibold text-sm mb-2">{v.title}</div>
-                <div className="text-xs text-white/40">
+                <div className="text-xs text-black/40">
                   {v.views} · {v.date}
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Open Positions */}
       <section id="positions" className="px-6 md:px-16 py-20 border-t border-dark-border">
         <h2 className="font-orbitron text-2xl md:text-3xl mb-3">Open Positions</h2>
-        <p className="text-white/50 mb-10 max-w-xl">
+        <p className="text-black/50 mb-10 max-w-xl">
           The channel is a small team. Here's where we could use a hand.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -67,7 +67,7 @@ export default function Home() {
                 {p.type}
               </div>
               <h3 className="font-orbitron text-lg mb-3">{p.title}</h3>
-              <p className="text-sm text-white/55 leading-relaxed">{p.description}</p>
+              <p className="text-sm text-black/55 leading-relaxed">{p.description}</p>
             </div>
           ))}
         </div>

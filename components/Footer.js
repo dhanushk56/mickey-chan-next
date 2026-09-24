@@ -13,7 +13,7 @@ export default function Footer() {
           <h2 className="font-orbitron text-3xl mb-4">
             Join the <span className="gradient-text">Community</span>
           </h2>
-          <p className="text-white/60 max-w-lg mx-auto mb-8 leading-relaxed">
+          <p className="text-black/60 max-w-lg mx-auto mb-8 leading-relaxed">
             Catch streams live, chat during uploads, and get first look at new series.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -26,7 +26,7 @@ export default function Footer() {
         </div>
       </section>
 
-      <footer className="px-6 md:px-16 py-8 border-t border-dark-border text-center text-xs text-white/30">
+      <footer className="px-6 md:px-16 py-8 border-t border-dark-border text-center text-xs text-black/30">
         © 2026 Mickey Chan. All rights reserved.
       </footer>
     </>

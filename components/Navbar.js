@@ -31,7 +31,7 @@ export default function Navbar() {
 
       <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
         {links.map((link) => (
-          <Link key={link.href} href={link.href} className="text-white/80 hover:text-gold-primary transition-colors">
+          <Link key={link.href} href={link.href} className="text-black/80 hover:text-gold-primary transition-colors">
             {link.label}
           </Link>
         ))}
@@ -46,7 +46,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="py-3 border-b border-white/10 last:border-none text-white/80 hover:text-gold-primary"
+              className="py-3 border-b border-white/10 last:border-none text-black/80 hover:text-gold-primary"
               onClick={() => setOpen(false)}
             >
               {link.label}
