@@ -14,7 +14,7 @@ export default function Home() {
               <br />
               <span className="gradient-text">Tell better stories.</span>
             </h1>
-            <p className="text-black/65 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
+            <p className="text-black/65 dark:text-white/65 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
               Welcome to Mickey Chan&apos;s world of games, streams, and stories. Find your next favorite moment and join the community.
             </p>
             <div className="flex flex-wrap gap-4">
