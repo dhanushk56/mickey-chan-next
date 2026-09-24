@@ -15,17 +15,17 @@ const COLORS = [
 ];
 
 function randomPetal(id) {
-  const size = 8 + Math.random() * 16; // 8px - 24px
+  const size = 8 + Math.random() * 14; // 8px - 22px
   return {
     id,
     left: Math.random() * 100, // vw %
     size,
-    duration: 9 + Math.random() * 12, // 9s - 21s to fall
+    duration: 11 + Math.random() * 12, // 11s - 23s to fall — slower reads as smoother than fast+small
     delay: -Math.random() * 20, // negative delay staggers start so it never looks "empty" on load
-    drift: Math.random() * 200 - 100, // sideways sway, -100px to 100px
-    rotate: 180 + Math.random() * 720, // total spin over the fall
+    drift: Math.random() * 160 - 80, // sideways sway, -80px to 80px
+    rotate: 180 + Math.random() * 540,
     color: COLORS[Math.floor(Math.random() * COLORS.length)],
-    opacity: 0.45 + Math.random() * 0.45,
+    opacity: 0.4 + Math.random() * 0.4,
   };
 }
 
@@ -33,13 +33,16 @@ export default function PetalField() {
   const [petals, setPetals] = useState([]);
 
   useEffect(() => {
-    // Randomize the amount on every load too, not just the placement.
-    const count = 22 + Math.floor(Math.random() * 26); // 22 - 47 petals
+    // Fewer, GPU-cheap petals — smoothness matters more than density.
+    const count = 16 + Math.floor(Math.random() * 14); // 16 - 29 petals
     setPetals(Array.from({ length: count }, (_, i) => randomPetal(i)));
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+    <div
+      className="petal-field fixed inset-0 overflow-hidden pointer-events-none z-0"
+      aria-hidden="true"
+    >
       {petals.map((p) => (
         <span
           key={p.id}
