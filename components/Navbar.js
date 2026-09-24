@@ -8,7 +8,6 @@ export default function Navbar() {
   const links = [
     { href: "/videos", label: "Videos" },
     { href: "/socials", label: "Socials" },
-    { href: "/join", label: "Join" },
   ];
 
   return (
