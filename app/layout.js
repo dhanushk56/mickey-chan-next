@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import PetalField from "@/components/PetalField";
 
 export const metadata = {
-  title: "Mickey Chan — Official Channel",
+  title: "Mickey Chan",
   description:
     "Welcome to the official channel of Mickey Chan — gamer, streamer, and storyteller. Watch the latest videos, explore open positions, and join the community.",
 };
