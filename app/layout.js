@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PetalField from "@/components/PetalField";
 
 export const metadata = {
   title: "Mickey Chan — Official Channel",
@@ -12,8 +13,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-grid-pattern">
+        <PetalField />
         <Navbar />
-        <main className="pt-20">{children}</main>
+        <main className="relative z-10 pt-20">{children}</main>
         <Footer />
       </body>
     </html>
