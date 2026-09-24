@@ -15,7 +15,7 @@ export default function SocialsPage() {
           <h1 className="font-display text-4xl md:text-6xl font-bold mt-3 mb-5">
             Find Mickey Chan online.
           </h1>
-          <p className="text-lg text-black/60 leading-relaxed">
+          <p className="text-lg text-black/60 dark:text-white/60 leading-relaxed">
             Follow along for new videos, live streams, updates, and everything happening in the community.
           </p>
         </div>
