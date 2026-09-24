@@ -4,24 +4,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme variables. Pink is deliberately absent from this list — every
+   pink value in the file below stays a literal hex/rgba so it never
+   shifts between themes. Only whites/blacks and body text invert. */
+:root {
+  --bg-1: #fff9fb;
+  --bg-2: #fff0f5;
+  --bg-3: #ffe2ed;
+  --text: #171217;
+  --text-muted: rgba(23, 18, 23, .72);
+  --text-faint: rgba(23, 18, 23, .3);
+  --text-faint-2: rgba(23, 18, 23, .38);
+  --surface: rgba(255, 255, 255, .64);
+  --surface-strong: rgba(255, 255, 255, .78);
+  --surface-soft: rgba(255, 255, 255, .42);
+  --surface-soft-hover: rgba(255, 255, 255, .8);
+  --border: rgba(23, 18, 23, .08);
+  --border-strong: rgba(23, 18, 23, .14);
+  --nav-bg: rgba(255, 249, 251, .92);
+  --shadow-soft: rgba(23, 18, 23, .08);
+  --grid-line: rgba(23, 18, 23, .02);
+  --scrollbar-track: #ffe4ec;
+  --selection-bg: #f9a8d4;
+}
+
+[data-theme="dark"] {
+  --bg-1: #0b0708;
+  --bg-2: #130a0d;
+  --bg-3: #1b0e14;
+  --text: #f5eef1;
+  --text-muted: rgba(245, 238, 241, .72);
+  --text-faint: rgba(245, 238, 241, .32);
+  --text-faint-2: rgba(245, 238, 241, .4);
+  --surface: rgba(30, 19, 24, .64);
+  --surface-strong: rgba(30, 19, 24, .8);
+  --surface-soft: rgba(255, 255, 255, .06);
+  --surface-soft-hover: rgba(255, 255, 255, .14);
+  --border: rgba(255, 255, 255, .08);
+  --border-strong: rgba(255, 255, 255, .16);
+  --nav-bg: rgba(11, 7, 8, .88);
+  --shadow-soft: rgba(0, 0, 0, .5);
+  --grid-line: rgba(255, 255, 255, .03);
+  --scrollbar-track: #1b0e14;
+  --selection-bg: #831843;
+}
+
 @layer base {
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
     font-family: 'DM Sans', sans-serif;
-    color: #171217;
-    background: linear-gradient(145deg, #fff9fb 0%, #fff0f5 52%, #ffe2ed 100%);
+    color: var(--text);
+    background: linear-gradient(145deg, var(--bg-1) 0%, var(--bg-2) 52%, var(--bg-3) 100%);
     overflow-x: hidden;
+    transition: background 200ms ease, color 200ms ease;
   }
   h1, h2, h3, h4, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
-  ::selection { background: #f9a8d4; color: #171217; }
+  ::selection { background: var(--selection-bg); color: var(--text); }
 }
 
 @layer components {
   .glass-nav {
-    background: rgba(255, 249, 251, 0.92);
-    border-bottom: 1px solid rgba(23, 18, 23, 0.08);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
     box-shadow: 0 6px 24px rgba(190, 24, 93, 0.06);
   }
 
@@ -29,7 +75,7 @@
     display: inline-flex;
     align-items: center;
     gap: .65rem;
-    color: #171217;
+    color: var(--text);
     font-size: .78rem;
     font-weight: 800;
     letter-spacing: .14em;
@@ -49,11 +95,32 @@
   }
 
   .nav-link {
-    color: rgba(23,18,23,.72);
+    color: var(--text-muted);
     transition: color 180ms ease;
   }
 
   .nav-link:hover { color: #be185d; }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+  }
+
+  .theme-toggle:hover {
+    border-color: rgba(219, 39, 119, .4);
+    transform: translateY(-1px);
+  }
 
   .menu-button {
     display: flex;
@@ -63,7 +130,7 @@
     width: 2.25rem;
     height: 2.25rem;
     padding: .45rem;
-    color: #171217;
+    color: var(--text);
   }
 
   .menu-button span {
@@ -82,9 +149,9 @@
     display: flex;
     flex-direction: column;
     padding: .75rem 1.5rem 1.25rem;
-    background: #fff9fb;
-    border-bottom: 1px solid rgba(23,18,23,.08);
-    box-shadow: 0 16px 25px rgba(23,18,23,.08);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 16px 25px var(--shadow-soft);
   }
 
   .hero-section {
@@ -138,10 +205,10 @@
   }
 
   .glass-card {
-    background: rgba(255,255,255,.64);
-    border: 1px solid rgba(23,18,23,.08);
+    background: var(--surface);
+    border: 1px solid var(--border);
     box-shadow: 0 12px 30px rgba(190,24,93,.06);
-    transition: transform 220ms cubic-bezier(.22,1,.36,1), box-shadow 220ms ease, border-color 220ms ease;
+    transition: transform 220ms cubic-bezier(.22,1,.36,1), box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
   }
 
   .glass-card:hover {
@@ -154,7 +221,7 @@
     height: 10rem;
     display: grid;
     place-items: center;
-    color: rgba(23,18,23,.3);
+    color: var(--text-faint);
     font-size: .7rem;
     background-position: center;
     background-size: cover;
@@ -188,12 +255,12 @@
     padding: .78rem 1.2rem;
     color: #be185d;
     border: 1px solid rgba(190,24,93,.25);
-    background: rgba(255,255,255,.42);
+    background: var(--surface-soft);
   }
 
   .btn-secondary:hover {
     transform: translateY(-2px);
-    background: rgba(255,255,255,.8);
+    background: var(--surface-soft-hover);
   }
 
   .nav-cta { padding: .6rem 1rem; }
@@ -213,14 +280,14 @@
 }
 
 .bg-grid-pattern {
-  background-image: linear-gradient(rgba(23,18,23,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(23,18,23,0.02) 1px, transparent 1px);
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
 .form-label {
   display: grid;
   gap: .45rem;
-  color: rgba(23,18,23,.72);
+  color: var(--text-muted);
   font-size: .82rem;
   font-weight: 700;
 }
@@ -228,13 +295,13 @@
 .form-input {
   width: 100%;
   min-height: 3rem;
-  border: 1px solid rgba(23,18,23,.14);
+  border: 1px solid var(--border-strong);
   border-radius: .8rem;
   padding: .8rem .9rem;
-  color: #171217;
-  background: rgba(255,255,255,.78);
+  color: var(--text);
+  background: var(--surface-strong);
   outline: none;
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background 180ms ease;
 }
 
 .form-input:focus {
@@ -243,7 +310,7 @@
 }
 
 .form-question {
-  color: #171217;
+  color: var(--text);
   font-size: .95rem;
   font-weight: 800;
   letter-spacing: -.01em;
@@ -257,7 +324,7 @@
 }
 
 .form-input-lg::placeholder {
-  color: rgba(23,18,23,.38);
+  color: var(--text-faint-2);
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
   letter-spacing: .01em;
@@ -270,9 +337,9 @@
 .join-form {
   max-width: 54rem;
   padding: 2rem;
-  border: 1px solid rgba(23,18,23,.09);
+  border: 1px solid var(--border);
   border-radius: 1.5rem;
-  background: rgba(255,255,255,.64);
+  background: var(--surface);
   box-shadow: 0 20px 50px rgba(190,24,93,.08);
 }
 
@@ -280,9 +347,9 @@
 
 .admin-card {
   padding: 2rem;
-  border: 1px solid rgba(23,18,23,.09);
+  border: 1px solid var(--border);
   border-radius: 1.25rem;
-  background: rgba(255,255,255,.76);
+  background: var(--surface-strong);
   box-shadow: 0 16px 40px rgba(190,24,93,.07);
 }
 
@@ -292,6 +359,8 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: .85rem;
   line-height: 1.6;
+  color: var(--text);
+  background: var(--surface-strong);
 }
 
 .admin-notice {
@@ -304,20 +373,22 @@
 .socials-page { min-height: calc(100vh - 5rem); }
 .socials-grid { max-width: 48rem; }
 .social-card {
-  color: #171217;
-  transition: transform 220ms cubic-bezier(.22, 1, .36, 1), border-color 220ms ease, box-shadow 220ms ease;
+  color: var(--text);
+  transition: transform 220ms cubic-bezier(.22, 1, .36, 1), border-color 220ms ease, box-shadow 220ms ease, background 220ms ease, color 220ms ease;
 }
 .social-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(219,39,119,.3);
-  box-shadow: 0 18px 36px rgba(190,24,93,.12);
+  border-color: transparent;
+  background: linear-gradient(135deg, #ec4899, #be185d);
+  color: #fff;
+  box-shadow: 0 18px 36px rgba(190,24,93,.18);
 }
 .social-arrow {
   color: #be185d;
   font-size: 1.35rem;
-  transition: transform 220ms ease;
+  transition: transform 220ms ease, color 220ms ease;
 }
-.social-card:hover .social-arrow { transform: translate(3px, -3px); }
+.social-card:hover .social-arrow { transform: translate(3px, -3px); color: #fff; }
 
 .petal-field { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .petal {
@@ -346,7 +417,7 @@ body::before {
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #ffe4ec; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
 ::-webkit-scrollbar-thumb { background: #f472b6; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #db2777; }
 
