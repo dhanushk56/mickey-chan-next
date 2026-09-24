@@ -1,4 +1,5 @@
 import { socials } from "@/data/socials";
+import SocialIcon from "@/components/SocialIcon";
 
 export const metadata = {
   title: "Mickey's Socials",
@@ -28,7 +29,10 @@ export default function SocialsPage() {
               rel={social.href === "#" ? undefined : "noreferrer"}
               className="social-card glass-card rounded-2xl p-6 flex items-center justify-between"
             >
-              <span className="font-display text-xl font-bold">{social.name}</span>
+              <span className="flex items-center gap-4">
+                <SocialIcon name={social.icon} className="w-7 h-7 flex-shrink-0" />
+                <span className="font-display text-xl font-bold">{social.name}</span>
+              </span>
               <span className="social-arrow" aria-hidden="true">↗</span>
             </a>
           ))}
