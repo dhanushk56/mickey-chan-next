@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -17,11 +18,15 @@ export default function Navbar() {
           <span className="brand-mark-icon">M</span>
           <span>MICKEY CHAN</span>
         </Link>
-        <button className="menu-button md:hidden" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>
-          <span /><span /><span />
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button className="menu-button" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+            <span /><span /><span />
+          </button>
+        </div>
         <nav className="hidden md:flex items-center gap-8 text-sm font-semibold">
           {links.map((link) => <Link key={link.href} href={link.href} className="nav-link">{link.label}</Link>)}
+          <ThemeToggle />
           <Link href="/join" className="btn-primary nav-cta">Join us <span aria-hidden="true">↗</span></Link>
         </nav>
         {open && (
