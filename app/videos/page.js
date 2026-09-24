@@ -8,7 +8,7 @@ function VideoSection({ title, items }) {
     <section className="mb-16">
       <div className="flex items-center gap-4 mb-8">
         <h2 className="font-display text-2xl md:text-3xl font-bold">{title}</h2>
-        <span className="h-px flex-1 bg-black/10" />
+        <span className="h-px flex-1 bg-black/10 dark:bg-white/10" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {items.map((video) => (
@@ -16,7 +16,7 @@ function VideoSection({ title, items }) {
             <div className="video-placeholder" style={{ backgroundImage: `url(${video.thumbnail})` }} />
             <div className="p-5">
               <h3 className="font-semibold text-base mb-2 leading-snug">{video.title}</h3>
-              <p className="text-sm text-black/45">{video.date}</p>
+              <p className="text-sm text-black/45 dark:text-white/45">{video.date}</p>
             </div>
           </a>
         ))}
@@ -36,10 +36,10 @@ export default async function VideosPage() {
         <div className="mb-12">
           <p className="section-kicker">From the channel</p>
           <h1 className="font-display text-4xl md:text-5xl font-bold mt-2">Videos & Shorts</h1>
-          <p className="text-black/55 mt-3">Automatically refreshed from YouTube every few minutes.</p>
+          <p className="text-black/55 dark:text-white/55 mt-3">Automatically refreshed from YouTube every few minutes.</p>
         </div>
         {videos.length === 0 ? (
-          <div className="glass-card rounded-2xl p-8 text-black/60">YouTube videos are temporarily unavailable.</div>
+          <div className="glass-card rounded-2xl p-8 text-black/60 dark:text-white/60">YouTube videos are temporarily unavailable.</div>
         ) : (
           <>
             <VideoSection title="Videos" items={regularVideos} />
