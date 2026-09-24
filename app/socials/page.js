@@ -1,7 +1,7 @@
 import { socials } from "@/data/socials";
 
 export const metadata = {
-  title: "Socials — Mickey Chan",
+  title: "Mickey's Socials",
   description: "Follow Mickey Chan across social platforms.",
 };
 
