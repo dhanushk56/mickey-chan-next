@@ -2,27 +2,27 @@
 
 import { useEffect, useState } from "react";
 
-// Several shades of pink so the petals feel varied, not uniform.
+// Several shades of purple so the petals feel varied, not uniform.
 const COLORS = [
-  "#ffd1dc",
-  "#ffb6c1",
-  "#f8bbd0",
-  "#f9a8d4",
-  "#f472b6",
-  "#ec4899",
-  "#e0669d",
-  "#db2777",
+  "#ede9fe",
+  "#ddd6fe",
+  "#c4b5fd",
+  "#a78bfa",
+  "#8b5cf6",
+  "#7c3aed",
+  "#6d28d9",
+  "#5b21b6",
 ];
 
 function randomPetal(id) {
-  const size = 8 + Math.random() * 14; // 8px - 22px
+  const size = 8 + Math.random() * 14;
   return {
     id,
-    left: Math.random() * 100, // vw %
+    left: Math.random() * 100,
     size,
-    duration: 11 + Math.random() * 12, // 11s - 23s to fall — slower reads as smoother than fast+small
-    delay: -Math.random() * 20, // negative delay staggers start so it never looks "empty" on load
-    drift: Math.random() * 160 - 80, // sideways sway, -80px to 80px
+    duration: 11 + Math.random() * 12,
+    delay: -Math.random() * 20,
+    drift: Math.random() * 160 - 80,
     rotate: 180 + Math.random() * 540,
     color: COLORS[Math.floor(Math.random() * COLORS.length)],
     opacity: 0.4 + Math.random() * 0.4,
@@ -33,8 +33,7 @@ export default function PetalField() {
   const [petals, setPetals] = useState([]);
 
   useEffect(() => {
-    // Fewer, GPU-cheap petals — smoothness matters more than density.
-    const count = 16 + Math.floor(Math.random() * 14); // 16 - 29 petals
+    const count = 16 + Math.floor(Math.random() * 14);
     setPetals(Array.from({ length: count }, (_, i) => randomPetal(i)));
   }, []);
 
