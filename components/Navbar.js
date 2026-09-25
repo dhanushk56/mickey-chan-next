@@ -15,7 +15,14 @@ export default function Navbar() {
     <header className="glass-nav fixed top-0 left-0 right-0 z-50 px-6 md:px-16 py-4">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <Link href="/" className="brand-mark" aria-label="Mickey Chan home">
-          <span className="brand-mark-icon">M</span>
+          <img
+            src="/mickey-logo.png"
+            alt="Mickey Chan"
+            width={88}
+            height={88}
+            className="object-cover rounded-xl"
+            style={{ width: 88, height: 88, objectFit: "cover" }}
+          />
           <span>MICKEY CHAN</span>
         </Link>
         <div className="flex items-center gap-3 md:hidden">
